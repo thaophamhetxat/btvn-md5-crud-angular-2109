@@ -1,0 +1,47 @@
+<div class="container">
+  <div>
+    <h2 style="text-align: center;color: red">Thêm Nhân Viên</h2>
+    <table>
+      <tr>
+        <td>Name:</td>
+        <td><textarea [(ngModel)]="nhanVien.name" cols="120"></textarea></td>
+      </tr>
+      <tr>
+        <td>Age:</td>
+        <td>
+          <textarea [(ngModel)]="nhanVien.age" cols="120"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td>Adress:</td>
+        <td>
+          <textarea [(ngModel)]="nhanVien.adress" cols="120"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><button style="float: right" (click)="addNewNhanVien()">Thêm</button></td>
+      </tr>
+    </table>
+  </div>
+  <h1 style="text-align: center;color: red">Thông Tin Nhân viên</h1>
+<table class="table" >
+  <thead>
+  <tr>
+    <td >Name</td>
+    <td>Age</td>
+    <td>Address</td>
+    <td>Action</td>
+  </tr>
+  </thead>
+  <tbody *ngFor="let arr of nhanViens">
+    <tr>
+      <td>{{arr.name}}</td>
+      <td>{{arr.age}}</td>
+      <td>{{arr.adress}}</td>
+      <td><button (click)="deleteNV(arr.name)">delete</button></td>
+<!--      <button (click)="edit(name,arr.age,arr.adress)" >Edit</button>-->
+    </tr>
+  </tbody>
+</table></div>
+
