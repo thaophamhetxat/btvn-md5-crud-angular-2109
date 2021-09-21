@@ -3,6 +3,10 @@
     <h2 style="text-align: center;color: red">Thêm Nhân Viên</h2>
     <table>
       <tr>
+        <td>id:</td>
+        <td><textarea [(ngModel)]="nhanVien.id" cols="120"></textarea></td>
+      </tr>
+      <tr>
         <td>Name:</td>
         <td><textarea [(ngModel)]="nhanVien.name" cols="120"></textarea></td>
       </tr>
@@ -18,6 +22,12 @@
           <textarea [(ngModel)]="nhanVien.adress" cols="120"></textarea>
         </td>
       </tr>
+      <tr hidden>
+        <td>Action:</td>
+        <td>
+          <textarea [(ngModel)]="nhanVien.action" cols="120" value="false"></textarea>
+        </td>
+      </tr>
       <tr>
         <td></td>
         <td><button style="float: right" (click)="addNewNhanVien()">Thêm</button></td>
@@ -28,6 +38,7 @@
 <table class="table" >
   <thead>
   <tr>
+    <td >ID</td>
     <td >Name</td>
     <td>Age</td>
     <td>Address</td>
@@ -36,11 +47,15 @@
   </thead>
   <tbody *ngFor="let arr of nhanViens">
     <tr>
+      <td>{{arr.id}}</td>
       <td>{{arr.name}}</td>
       <td>{{arr.age}}</td>
       <td>{{arr.adress}}</td>
-      <td><button (click)="deleteNV(arr.name)">delete</button></td>
-<!--      <button (click)="edit(name,arr.age,arr.adress)" >Edit</button>-->
+      <td [ngStyle]="{color: arr.action ? 'green':'red'}">{{arr.action ? 'onl':'off'}}</td>
+
+      <td><button (click)="deleteNV(arr.id)">delete</button></td>
+      <td><button (click)="edit(arr.id,arr.name,arr.age,arr.adress)" >Edit</button></td>
+      <td><button (click)="arr.action=!arr.action" >check</button></td>
     </tr>
   </tbody>
 </table></div>
