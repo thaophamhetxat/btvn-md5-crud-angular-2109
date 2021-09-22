@@ -6,13 +6,17 @@ import { NhanVienComponent } from './nhanVien/nhan-vien.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import {FormsModule} from "@angular/forms";
+import { DemoComponent } from './demo/demo.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NhanVienComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    DemoComponent,
+    ProductComponent
   ],
     imports: [
         BrowserModule,

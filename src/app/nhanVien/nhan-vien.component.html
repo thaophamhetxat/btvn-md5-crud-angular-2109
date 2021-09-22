@@ -1,62 +1,131 @@
-<div class="container">
-  <div>
-    <h2 style="text-align: center;color: red">Thêm Nhân Viên</h2>
-    <table>
-      <tr>
-        <td>id:</td>
-        <td><textarea [(ngModel)]="nhanVien.id" cols="120"></textarea></td>
-      </tr>
-      <tr>
-        <td>Name:</td>
-        <td><textarea [(ngModel)]="nhanVien.name" cols="120"></textarea></td>
-      </tr>
-      <tr>
-        <td>Age:</td>
-        <td>
-          <textarea [(ngModel)]="nhanVien.age" cols="120"></textarea>
-        </td>
-      </tr>
-      <tr>
-        <td>Adress:</td>
-        <td>
-          <textarea [(ngModel)]="nhanVien.adress" cols="120"></textarea>
-        </td>
-      </tr>
-      <tr hidden>
-        <td>Action:</td>
-        <td>
-          <textarea [(ngModel)]="nhanVien.action" cols="120" value="false"></textarea>
-        </td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><button style="float: right" (click)="addNewNhanVien()">Thêm</button></td>
-      </tr>
-    </table>
+<div class="container" >
+  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalCreate">
+    Create
+  </button>
+  <!-- Modal -->
+  <div class="modal fade" id="myModalCreate" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <table>
+            <tr>
+              <td>id:</td>
+              <td><textarea [(ngModel)]="nhanVien.id" cols="40"></textarea></td>
+            </tr>
+            <tr>
+              <td>Name:</td>
+              <td><textarea [(ngModel)]="nhanVien.name" cols="40"></textarea></td>
+            </tr>
+            <tr>
+              <td>Age:</td>
+              <td>
+                <textarea [(ngModel)]="nhanVien.age" cols="40"></textarea>
+              </td>
+            </tr>
+            <tr>
+              <td>Adress:</td>
+              <td>
+                <textarea [(ngModel)]="nhanVien.adress" cols="40"></textarea>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" (click)="addNewNhanVien()" class="btn btn-success" data-dismiss="modal">Edit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
   </div>
+
+
+
+
   <h1 style="text-align: center;color: red">Thông Tin Nhân viên</h1>
-<table class="table" >
-  <thead>
-  <tr>
-    <td >ID</td>
-    <td >Name</td>
-    <td>Age</td>
-    <td>Address</td>
-    <td>Action</td>
-  </tr>
-  </thead>
-  <tbody *ngFor="let arr of nhanViens">
+  <table class="table">
+    <thead>
+    <tr>
+      <td>ID</td>
+      <td>Name</td>
+      <td>Age</td>
+      <td>Address</td>
+      <td>Action</td>
+    </tr>
+    </thead>
+    <tbody *ngFor="let arr of nhanViens">
     <tr>
       <td>{{arr.id}}</td>
       <td>{{arr.name}}</td>
       <td>{{arr.age}}</td>
       <td>{{arr.adress}}</td>
-      <td [ngStyle]="{color: arr.action ? 'green':'red'}">{{arr.action ? 'onl':'off'}}</td>
+      <td [ngStyle]="{color: arr.action ? 'green':'red'}">{{arr.action ? 'onl' : 'off'}}</td>
 
-      <td><button (click)="deleteNV(arr.id)">delete</button></td>
-      <td><button (click)="edit(arr.id,arr.name,arr.age,arr.adress)" >Edit</button></td>
-      <td><button (click)="arr.action=!arr.action" >check</button></td>
+      <td>
+        <button (click)="deleteNV(arr.id)">delete</button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"
+                (click)="showEdit(arr.id)">Edit
+        </button>
+      </td>
+      <td>
+        <button (click)="arr.action=!arr.action">check</button>
+      </td>
     </tr>
-  </tbody>
-</table></div>
+    </tbody>
+  </table>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <table>
+            <tr>
+              <td>id:</td>
+              <td><textarea [(ngModel)]="nhanVien.id" cols="40"></textarea></td>
+            </tr>
+            <tr>
+              <td>Name:</td>
+              <td><textarea [(ngModel)]="nhanVien.name" cols="40"></textarea></td>
+            </tr>
+            <tr>
+              <td>Age:</td>
+              <td>
+                <textarea [(ngModel)]="nhanVien.age" cols="40"></textarea>
+              </td>
+            </tr>
+            <tr>
+              <td>Adress:</td>
+              <td>
+                <textarea [(ngModel)]="nhanVien.adress" cols="40"></textarea>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" (click)="submitEdit(nhanVien.id)" class="btn btn-success" data-dismiss="modal">Edit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
 
